@@ -24,20 +24,38 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0KV-GR-Iv0">
                                 <rect key="frame" x="0.0" y="389" width="48" height="128"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTV-5m-e24">
+                                    <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTV-5m-e24" customClass="ItemButton" customModule="MultipleObjectTouch" customModuleProvider="target">
                                         <rect key="frame" x="-3" y="-2" width="52" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="dice"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="objectScene" value="diceCollada.scn"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="audioFileName" value="Ding.m4a"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="objectNode" value="dice"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="objectSceneName" value="diceCollada"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="objectNodeName" value="dice"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="audioLoops" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="audioPositional" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="diceTouched:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Wo5-LD-8Gw"/>
+                                            <action selector="itemSelected:" destination="BV1-FR-VrT" eventType="touchUpInside" id="3X1-Mg-Htf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqa-No-vdK">
+                                    <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqa-No-vdK" customClass="ItemButton" customModule="MultipleObjectTouch" customModuleProvider="target">
                                         <rect key="frame" x="1" y="67" width="48" height="61"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="speaker"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="objectNode" value="speaker"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="audioFileName" value="majorlazermono.mp3"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="objectScene" value="Speaker.scn"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="objectSceneName" value="Speaker"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="objectNodeName" value="speaker"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="audioLoops" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="audioPositional" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="speakerTouched:" destination="BV1-FR-VrT" eventType="touchUpInside" id="tMv-jv-joN"/>
+                                            <action selector="itemSelected:" destination="BV1-FR-VrT" eventType="touchUpInside" id="BVV-F0-6k9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -61,6 +79,8 @@
                     </view>
                     <connections>
                         <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outletCollection property="itemButtons" destination="NTV-5m-e24" collectionClass="NSMutableArray" id="p4F-PT-FI6"/>
+                        <outletCollection property="itemButtons" destination="cqa-No-vdK" collectionClass="NSMutableArray" id="bdo-sN-QKc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

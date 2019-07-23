@@ -11,12 +11,21 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController {
-
     
     @IBOutlet var sceneView: ARSCNView!
     var center : CGPoint!
 //    var dice = SCNNode()
 //    var audioSource = SCNAudioSource()
+    var isFirstPoint = true
+    var points = [SCNNode]()
+    
+    var selectedObject : AudioARItem?
+    
+    // Refactor this so you can add the second object and third object
+    // idea: Pass in objects as an array with audio files as an object
+    
+    
+
 
 
     override func viewDidLoad() {
@@ -30,6 +39,11 @@ class ViewController: UIViewController {
 		sceneView.autoenablesDefaultLighting = true
     }
     
+    enum WorldObjects: String {
+        case dice = "dice"
+        case speaker = "speaker"
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -37,63 +51,63 @@ class ViewController: UIViewController {
         sceneView.session.run(configuration)
 
 
-		let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-		if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-			//			diceNode.position = SCNVector3(
-			//				x: hitResult.worldTransform.columns.3.x,
-			//				y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
-			//				z: hitResult.worldTransform.columns.3.z
-			//			)
-			diceNode.position = SCNVector3(
-				x: 0,
-				y: 0,
-				z: 0
-			)
-			sceneView.scene.rootNode.addChildNode(diceNode)
-			let audioSource = SCNAudioSource(fileNamed: "majorlazermono.mp3")!
-			audioSource.loops = true
-			audioSource.isPositional = true
-			diceNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
-		}
+//        let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
+//        if let diceNode = diceScene.rootNode.childNode(withName: WorldObjects.dice.rawValue, recursively: true) {
+//            //            diceNode.position = SCNVector3(
+//            //                x: hitResult.worldTransform.columns.3.x,
+//            //                y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
+//            //                z: hitResult.worldTransform.columns.3.z
+//            //            )
+//            diceNode.position = SCNVector3(
+//                x: 10,
+//                y: 0,
+//                z: 0
+//            )
+//            sceneView.scene.rootNode.addChildNode(diceNode)
+//            let audioSource = SCNAudioSource(fileNamed: "majorlazermono.mp3")!
+//            audioSource.loops = true
+//            audioSource.isPositional = true
+//            diceNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+//        }
+//
+//        let spScene1 = SCNScene(named: "art.scnassets/cubeScene.scn")!
+//        if let nd_speaker = spScene1.rootNode.childNode(withName: WorldObjects.speaker.rawValue, recursively: true) {
+////        let spScene = SCNScene(named: "art.scnassets/Speaker.scn")!
+////        if let nd_speaker = spScene.rootNode.childNode(withName: "SPEAKER", recursively: true) {
+//            //            print("Z = ", hitResult, hitResult.worldTransform.columns.3.z)
+//            //            nd_speaker.position = SCNVector3(
+//            //                x: hitResult.worldTransform.columns.3.x,
+//            //                y: hitResult.worldTransform.columns.3.y,
+//            //                z: hitResult.worldTransform.columns.3.z - 5
+//            //            )
+//
+//            nd_speaker.position = SCNVector3(
+//                x: 0,
+//                y: 0,
+//                z: 0
+//            )
+//
+//            sceneView.scene.rootNode.addChildNode(nd_speaker)
+//            let audioSource = SCNAudioSource(fileNamed: "Sine Chirp mono.wav")!
+//            audioSource.loops = true
+//            audioSource.isPositional = true
+//            nd_speaker.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+//        }
 
-		let spScene1 = SCNScene(named: "art.scnassets/cubeScene.scn")!
-		if let nd_speaker = spScene1.rootNode.childNode(withName: "speaker", recursively: true) {
-//		let spScene = SCNScene(named: "art.scnassets/Speaker.scn")!
-//		if let nd_speaker = spScene.rootNode.childNode(withName: "SPEAKER", recursively: true) {
-			//			print("Z = ", hitResult, hitResult.worldTransform.columns.3.z)
-			//			nd_speaker.position = SCNVector3(
-			//				x: hitResult.worldTransform.columns.3.x,
-			//				y: hitResult.worldTransform.columns.3.y,
-			//				z: hitResult.worldTransform.columns.3.z - 5
-			//			)
-
-			nd_speaker.position = SCNVector3(
-				x: 6,
-				y: 0,
-				z: 0
-			)
-
-			sceneView.scene.rootNode.addChildNode(nd_speaker)
-			let audioSource = SCNAudioSource(fileNamed: "Sine Chirp mono.wav")!
-			audioSource.loops = true
-			audioSource.isPositional = true
-			nd_speaker.addAudioPlayer(SCNAudioPlayer(source: audioSource))
-		}
-
-		let spScene2 = SCNScene(named: "art.scnassets/cubeScene.scn")!
-		if let nd_speaker2 = spScene2.rootNode.childNode(withName: "speaker", recursively: true) {
-			nd_speaker2.position = SCNVector3(
-				x: 0,
-				y: 0,
-				z: 6
-			)
-
-			sceneView.scene.rootNode.addChildNode(nd_speaker2)
-			let audioSource = SCNAudioSource(fileNamed: "White Noise mono.wav")!
-			audioSource.loops = true
-			audioSource.isPositional = true
-			nd_speaker2.addAudioPlayer(SCNAudioPlayer(source: audioSource))
-		}
+//        let spScene2 = SCNScene(named: "art.scnassets/cubeScene.scn")!
+//        if let nd_speaker2 = spScene2.rootNode.childNode(withName: "speaker", recursively: true) {
+//            nd_speaker2.position = SCNVector3(
+//                x: 0,
+//                y: 0,
+//                z: 6
+//            )
+//
+//            sceneView.scene.rootNode.addChildNode(nd_speaker2)
+//            let audioSource = SCNAudioSource(fileNamed: "White Noise mono.wav")!
+//            audioSource.loops = true
+//            audioSource.isPositional = true
+//            nd_speaker2.addAudioPlayer(SCNAudioPlayer(source: audioSource))
+//        }
 
     }
     
@@ -108,85 +122,99 @@ class ViewController: UIViewController {
         center = view.center // This will keep the center of the object where it needs to be
     }
     
-    var isFirstPoint = true
-    var points = [SCNNode]()
-
-    
-    // Refactor this so you can add the second object and third object
-    // idea: Pass in objects as an array with audio files as an object
-	enum WorldObjects : String {
-		case dice = "dice"
-		case speaker = "speaker"
-	}
-
-	var selectObject : WorldObjects = .dice
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let touchLocation = touch.location(in: sceneView)
             let results = sceneView.hitTest(touchLocation, types: .featurePoint)
             if let hitResult = results.first {
-				switch selectObject {
-				case .dice:
-					// Create a new scene
-					let diceScene = SCNScene(named: "art.scnassets/diceCollada.scn")!
-					if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
-						diceNode.position = SCNVector3(
-							x: hitResult.worldTransform.columns.3.x,
-							y: hitResult.worldTransform.columns.3.y + diceNode.boundingSphere.radius,
-							z: hitResult.worldTransform.columns.3.z
-						)
-
-						sceneView.scene.rootNode.addChildNode(diceNode)
-						let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
-						let randomZ = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
-
-						let audioSource = SCNAudioSource(fileNamed: "Ding.m4a")!
-						//audioSource.loops = true
-						diceNode.addAudioPlayer(SCNAudioPlayer(source: audioSource))
-
-						diceNode.runAction(SCNAction.rotateBy(x: CGFloat(randomX * 5), y: 0, z: CGFloat(randomZ * 5), duration: 0.5))
-					}
-					break
-				case .speaker:
-					let spScene = SCNScene(named: "art.scnassets/Speaker.scn")!
-					if let nd_speaker = spScene.rootNode.childNode(withName: "SPEAKER", recursively: true) {
-						print("Z = ", hitResult, hitResult.worldTransform.columns.3.z)
-						nd_speaker.position = SCNVector3(
-							x: hitResult.worldTransform.columns.3.x,
-							y: hitResult.worldTransform.columns.3.y,
-							z: hitResult.worldTransform.columns.3.z - 5
-						)
-
-//						nd_speaker.position = SCNVector3(
-//							x: 0,
-//							y: 0,
-//							z: -10
-//						)
-
-						nd_speaker.eulerAngles.y = -45
-						//nd_speaker.transform = SCNMatrix4.init(0.24)
-						sceneView.scene.rootNode.addChildNode(nd_speaker)
-						let audioSource = SCNAudioSource(fileNamed: "majorlazermono.mp3")!
-						audioSource.loops = true
-						audioSource.isPositional = true
-						nd_speaker.addAudioPlayer(SCNAudioPlayer(source: audioSource))
-					}
-					break
-				}
+                guard let node = selectedObject?.node else { return }
+                node.position = SCNVector3(
+                    x: hitResult.worldTransform.columns.3.x,
+                    y: hitResult.worldTransform.columns.3.y + node.boundingSphere.radius,
+                    z: hitResult.worldTransform.columns.3.z
+                )
+                if selectedObject?.audioSource != nil {
+                    node.addAudioPlayer(SCNAudioPlayer(source: selectedObject!.audioSource))
+                }
+                sceneView.scene.rootNode.addChildNode(node)
+                
+//                let randomX = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
+//                let randomZ = Float((arc4random_uniform(4) + 1)) * (Float.pi/2)
+//                node.runAction(SCNAction.rotateBy(x: CGFloat(randomX * 5), y: 0, z: CGFloat(randomZ * 5), duration: 0.5))
             }
         }
     }
 
-	@IBAction func diceTouched(_ sender: Any) {
-		selectObject = .dice
-	}
-
-	@IBAction func speakerTouched(_ sender: Any) {
-		selectObject = .speaker
-	}
+    /* Create Outlet collection array of the item buttons */
+    @IBOutlet var itemButtons: [ItemButton]!
+    
+    /* Transmit the info of the selected item to the selectedObject holder */
+    @IBAction func itemSelected(_ sender: Any) {
+        if let button = sender as? ItemButton {
+            for itemButton in itemButtons {
+                if itemButton == button {
+                    itemButton.alpha = 1.0
+                    selectedObject = itemButton.arItem
+                } else {
+                    itemButton.alpha = 0.4
+                }
+            }
+        }
+    }
+    
 }
 
+struct AudioARItem {
+    var name: String
+    var audioSource: SCNAudioSource
+    var node: SCNNode
+}
+
+class ItemButton: UIButton {
+    var arItem: AudioARItem
+    
+    /* All the Inspectable variable can be edited directly from the Storyboard editor */
+    @IBInspectable var audioFileName: String? {
+        didSet {
+            if let source = SCNAudioSource(fileNamed: audioFileName ?? "WhiteNoiseMono.wav") {
+                arItem.audioSource = source
+            }
+        }
+    }
+    @IBInspectable var objectSceneName: String? {
+        didSet { setupScene() }
+    }
+    @IBInspectable var objectNodeName: String? {
+        didSet {
+            setupScene()
+            arItem.name = objectNodeName ?? ""
+        }
+    }
+    
+    @IBInspectable var audioLoops: Bool = false {
+        didSet { arItem.audioSource.loops = audioLoops }
+    }
+    
+    @IBInspectable var audioPositional: Bool = false {
+        didSet { arItem.audioSource.isPositional = audioPositional }
+    }
+    
+    private func setupScene() {
+        if let nodeName = objectNodeName, let sceneName = objectSceneName {
+            if let scene = SCNScene(named: "art.scnassets/" + sceneName + ".scn"),
+                let node = scene.rootNode.childNode(withName: nodeName, recursively: true)
+            {
+                arItem.node = node
+            }
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        arItem = AudioARItem(name: "",audioSource: SCNAudioSource(), node: SCNNode())
+        super.init(coder: aDecoder)
+    }
+}
 
 extension ViewController: ARSCNViewDelegate {
 

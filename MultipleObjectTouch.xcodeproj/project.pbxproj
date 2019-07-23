@@ -18,7 +18,7 @@
 		8BFF89AC22E1DAF300D604C9 /* guitar_grunge.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF89A922E1DAF300D604C9 /* guitar_grunge.mp3 */; };
 		8BFF89AD22E1DAF300D604C9 /* thriller_synth.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF89AA22E1DAF300D604C9 /* thriller_synth.mp3 */; };
 		8BFF89AE22E1DAF300D604C9 /* drum_break.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF89AB22E1DAF300D604C9 /* drum_break.mp3 */; };
-		8BFF89B322E1EC9000D604C9 /* White Noise mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF89B122E1EC9000D604C9 /* White Noise mono.wav */; };
+		8BFF89B322E1EC9000D604C9 /* WhiteNoiseMono.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF89B122E1EC9000D604C9 /* WhiteNoiseMono.wav */; };
 		8BFF89B422E1EC9000D604C9 /* Sine Chirp mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8BFF89B222E1EC9000D604C9 /* Sine Chirp mono.wav */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +36,7 @@
 		8BFF89A922E1DAF300D604C9 /* guitar_grunge.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = guitar_grunge.mp3; sourceTree = "<group>"; };
 		8BFF89AA22E1DAF300D604C9 /* thriller_synth.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thriller_synth.mp3; sourceTree = "<group>"; };
 		8BFF89AB22E1DAF300D604C9 /* drum_break.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drum_break.mp3; sourceTree = "<group>"; };
-		8BFF89B122E1EC9000D604C9 /* White Noise mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "White Noise mono.wav"; sourceTree = "<group>"; };
+		8BFF89B122E1EC9000D604C9 /* WhiteNoiseMono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WhiteNoiseMono.wav; sourceTree = "<group>"; };
 		8BFF89B222E1EC9000D604C9 /* Sine Chirp mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Sine Chirp mono.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +79,7 @@
 				8BFF89A922E1DAF300D604C9 /* guitar_grunge.mp3 */,
 				8BFF89AA22E1DAF300D604C9 /* thriller_synth.mp3 */,
 				8BFF89B222E1EC9000D604C9 /* Sine Chirp mono.wav */,
-				8BFF89B122E1EC9000D604C9 /* White Noise mono.wav */,
+				8BFF89B122E1EC9000D604C9 /* WhiteNoiseMono.wav */,
 				1C04111B22D870FB00431E6A /* art.scnassets */,
 				1C04112222D870FB00431E6A /* Assets.xcassets */,
 				1C04112422D870FB00431E6A /* LaunchScreen.storyboard */,
@@ -146,7 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BFF89B322E1EC9000D604C9 /* White Noise mono.wav in Resources */,
+				8BFF89B322E1EC9000D604C9 /* WhiteNoiseMono.wav in Resources */,
 				1C04111C22D870FB00431E6A /* art.scnassets in Resources */,
 				1C04112622D870FB00431E6A /* LaunchScreen.storyboard in Resources */,
 				8BFF89AE22E1DAF300D604C9 /* drum_break.mp3 in Resources */,
@@ -314,7 +314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5M4V472WPG;
+				DEVELOPMENT_TEAM = X6AV3UTSA3;
 				INFOPLIST_FILE = MultipleObjectTouch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -335,7 +335,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5M4V472WPG;
+				DEVELOPMENT_TEAM = X6AV3UTSA3;
 				INFOPLIST_FILE = MultipleObjectTouch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
